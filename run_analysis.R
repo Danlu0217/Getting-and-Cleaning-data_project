@@ -7,10 +7,10 @@ d<-read.table("train/Y_train.txt")
 newData<-rbind(a,c)
 #Get where/in which column "Mean()" functions are located from features file
 features<-read.table("features.txt")
-#serach for functions
-meanV<-grep("mean",features$V2)
+#serach for functions,excluding "meanFreq"
+meanV<-grep("\\<mean\\>",features$V2)
 #Get the name for the activity
-NameMean<-features$V2[meanV]
+NameMean<-features$V2[grep("\\<mean\\>",features$V2)]
 #Get all the data with mean functions from the new merged files
 mean_tot<-newData[,meanV]
 NameMean1<-as.character(NameMean)
