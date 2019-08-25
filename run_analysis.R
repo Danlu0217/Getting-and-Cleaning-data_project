@@ -13,11 +13,39 @@ meanV<-grep("mean",features$V2)
 NameMean<-features$V2[meanV]
 #Get all the data with mean functions from the new merged files
 mean_tot<-newData[,meanV]
+NameMean1<-as.character(NameMean)
+#Get all the data with mean functions from the new merged files
+mean_tot<-newData[,meanV]
 #Get std columns
 stdV<-grep("std",features$V2)
-#Get the activity names
+#Get the activity namesNamestd<-features$V2[stdV]
 Namestd<-features$V2[stdV]
+Namestd1<-as.character(Namestd)
+#Make a label vector
+label<-c(NameMean1,Namestd1)
+#Get merged activity number labels
+ActNum<-rbind(b,d)
+actnum<-ActNum[,1]
 #Get all the data with std functions from the new merged files
 std_tot<-newData[,stdV]
 #Final merged file with means and standard deviations
 newtable1<-cbind(mean_tot,std_tot)
+names(newtable1)<-label
+#Make actviity names
+newn1<-gsub("1","WALKING",actnum)
+newn2<-gsub("2","WALKING_UPSTAIRS",newn1)
+newn3<-gsub("3","WALKING_DOWNSTAIRS",newn2)
+newn4<-gsub("4","SITTING",newn3)
+newn5<-gsub("5","STANDING",newn4)
+newn6<-gsub("6","LAYING",newn5)
+actname<-as.factor(newn6)
+#Put  activity name in the new table as a column
+library(dplyr)
+finaltable1<-mutate(newtable1,actname)
+
+
+
+
+
+
+
