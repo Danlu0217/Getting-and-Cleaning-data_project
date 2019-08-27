@@ -1,25 +1,3 @@
-Skip to content
- 
-Search or jump to…
-
-Pull requests
-Issues
-Marketplace
-Explore
- 
-@Danlu0217 
-Learn Git and GitHub without any code!
-Using the Hello World guide, you’ll start a branch, write comments, and open a pull request.
-
- 
-1
-0 0 Danlu0217/Getting-and-Cleaning-data_project
- Code  Issues 0  Pull requests 0  Projects 0  Wiki  Security  Insights  Settings
-Getting-and-Cleaning-data_project/secondRscript.R
-@Danlu0217 Danlu0217 Update secondRscript.R
-c096ce3 14 hours ago
-69 lines (67 sloc)  2.47 KB
-    
 #read data files: value file from "test" folder and another file from "train" file
 a<-read.table("test/X_test.txt")
 c<-read.table("train/X_train.txt")
