@@ -1,3 +1,25 @@
+Skip to content
+ 
+Search or jump to…
+
+Pull requests
+Issues
+Marketplace
+Explore
+ 
+@Danlu0217 
+Learn Git and GitHub without any code!
+Using the Hello World guide, you’ll start a branch, write comments, and open a pull request.
+
+ 
+1
+0 0 Danlu0217/Getting-and-Cleaning-data_project
+ Code  Issues 0  Pull requests 0  Projects 0  Wiki  Security  Insights  Settings
+Getting-and-Cleaning-data_project/secondRscript.R
+@Danlu0217 Danlu0217 Update secondRscript.R
+c096ce3 14 hours ago
+69 lines (67 sloc)  2.47 KB
+    
 #read data files: value file from "test" folder and another file from "train" file
 a<-read.table("test/X_test.txt")
 c<-read.table("train/X_train.txt")
@@ -42,10 +64,28 @@ actname<-as.factor(newn6)
 #Put  activity name in the new table as a column
 library(dplyr)
 finaltable1<-mutate(newtable1,actname)
-
-
-
-
-
+newM<-colMeans(newtable1)
+data1<-finaltable1[finaltable1$actname=="WALKING",]
+data2<-finaltable1[finaltable1$actname=="WALKING_UPSTAIRS",]
+data3<-finaltable1[finaltable1$actname=="WALKING_DOWNSTAIRS",]
+data4<-finaltable1[finaltable1$actname=="SITTING",]
+data5<-finaltable1[finaltable1$actname=="STANDING",]
+data6<-finaltable1[finaltable1$actname=="LAYING",]
+#mean for WALKING for each measurement
+d1mean<-colMeans(data1[,1:66])
+#Mean for WALKING_UPSTAIRS
+d2mean<-colMeans(data2[,1:66])
+#Mean for WALKING_DOWNSTAIRS
+d3mean<-colMeans(data3[,1:66])
+#Mean for SITTING
+d4mean<-colMeans(data4[,1:66])
+#Mean for STANDING
+d5mean<-colMeans(data5[,1:66])
+#Mean for LAYING
+d6mean<-colMeans(data6[,1:66])
+meandata<-data.frame(d1mean,d2mean,d3mean,d4mean,d5mean,d6mean)
+act<-c("WALKING","WALKING_UPSTAIRS","#WALKING_DOWNSTAIRS","SITING","STANDING","LAYING")
+#Rename the columns
+names(meandata)<-act
 
 
